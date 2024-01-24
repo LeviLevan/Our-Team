@@ -1,0 +1,43 @@
+.team-carousel {
+    display: grid;
+    gap: 20px;
+}
+
+/* Styles for desktop */
+@media only screen and (min-width: 1024px) {
+    .team-carousel[data-blocks="1"] {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .team-carousel[data-blocks="2"] {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .team-carousel[data-blocks="3"] {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .team-carousel[data-blocks="4"] {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Styles for tablet */
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+    .team-carousel[data-blocks="1"] {
+        /* Adjust styles for 1 block on tablet */
+    }
+    .team-carousel[data-blocks="2"] {
+        /* Adjust styles for 2 blocks on tablet */
+    }
+    .team-carousel[data-blocks="3"] {
+        /* Adjust styles for 3 blocks on tablet */
+    }
+}
+
+/* Styles for mobile */
+@media only screen and (max-width: 767px) {
+    .team-carousel[data-blocks="1"] {
+        /* Adjust styles for 1 block on mobile */
+    }
+    .team-carousel[data-blocks="2"] {
+        /* Adjust styles for 2 blocks on mobile */
+    }
+}
