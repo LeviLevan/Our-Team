@@ -41,3 +41,20 @@
         /* Adjust styles for 2 blocks on mobile */
     }
 }
+
+.swiper-container {
+    overflow: hidden; /* Hide the overflow */
+}
+
+.swiper-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; /* Center vertically */
+}
+
+.swiper-slide {
+    width: 100%; /* Take 100% width of the container */
+}

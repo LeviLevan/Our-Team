@@ -147,7 +147,7 @@ class Widget_Our_Team_Slider extends Widget_Base {
             [
                 'label' => __( 'Enable Slider', 'wp_lfit' ),
                 'type' => Controls_Manager::SWITCHER,
-                'default' => 'yes',
+                'default' => 'no',
             ]
         );
 
@@ -235,28 +235,34 @@ class Widget_Our_Team_Slider extends Widget_Base {
 
     protected function render_swiper_slider( $settings ) {
         $is_mobile = wp_is_mobile();
-        $slides_per_view = ! empty( $settings['slides_per_view'] ) ? $settings['slides_per_view'] : 1;
-
-        // Set slides_per_view to 1 for mobile
-        if ( $is_mobile ) {
-            $slides_per_view = 1;
-        }
-
         $slides = '';
 
         if ( ! empty( $settings['slide_items'] ) ) {
             foreach ( $settings['slide_items'] as $slide ) {
-                $slides .= '<swiper-slide>';
-                $slides .= '<img src="' . esc_url( $slide['slide_image']['url'] ) . '" alt="slider image"/>';
-                $slides .= '<div class="slide-text">' . esc_html( $slide['slide_text'] ) . '</div>';
-                $slides .= '</swiper-slide>';
+                $slides .= '<div class="swiper-slide">';
+                $slides .= '<figure class="swiper-slide-inner">';
+                $slides .= '<img decoding="async" class="swiper-slide-image" src="' . esc_url( $slide['slide_image']['url'] ) . '" alt="' . esc_attr( $slide['slide_text'] ) . '">';
+                $slides .= '</figure>';
+                $slides .= '</div>';
             }
 
-            $slider = '<swiper-container class="mySwiper" effect="" grab-cursor="true" autoplay="true" direction="horizontal" slides-per-view="' . esc_attr( $slides_per_view ) . '">' . $slides . '</swiper-container>';
+            // Swiper Container
+            echo '<div class="swiper-container mySwiper" autoplay="true" data-slides-per-view="' . esc_attr( $settings['slides_per_view'] ) . '" data-space-between="10" data-loop="true">';
 
-            echo $slider;
+            // Swiper Wrapper
+            echo '<div class="swiper-wrapper">';
+
+            // Display the slides
+            echo $slides;
+
+            // Close Swiper Wrapper
+            echo '</div>';
+            // Close Swiper Container
+            echo '</div>';
         }
     }
+
+
 
     protected function content_template() {}
 

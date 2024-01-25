@@ -43,9 +43,17 @@ class Custom_Elementor_Extensions {
 
     public function enqueue_scripts_styles() {
         wp_enqueue_style('widget-css', plugin_dir_url(__FILE__) . 'elementor-ext/widgets/css/widget.css');
-        wp_enqueue_style('swiper', 'https://unpkg.com/swiper/swiper-bundle.min.css', array(), '6.5.5');
-        wp_enqueue_script('swiper', 'https://unpkg.com/swiper/swiper-bundle.min.js', array('jquery'), '6.5.5', true);
+        
+        // Enqueue Swiper styles
+        wp_enqueue_style('swiper-style', 'https://unpkg.com/swiper/swiper-bundle.min.css');
+
+        // Enqueue Swiper script
+        wp_enqueue_script('swiper-script', 'https://unpkg.com/swiper/swiper-bundle.min.js', array('jquery'), '', true);
+
+        // Enqueue your widget script
+        wp_enqueue_script('widget-js', plugin_dir_url(__FILE__) . 'elementor-ext/widgets/js/widget.js', array('jquery'), '', true);
     }
+
 }
 
 Custom_Elementor_Extensions::get_instance()->init();
